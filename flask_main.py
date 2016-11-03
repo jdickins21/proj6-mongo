@@ -65,11 +65,12 @@ except:
 @app.route("/")
 @app.route("/index")
 def index():
+  form = MemoForm()
   app.logger.debug("Main page entry")
   g.memos = get_memos()
   for memo in g.memos: 
       app.logger.debug("Memo: " + str(memo))
-  return flask.render_template('index.html')
+  return flask.render_template('index.html', form = form)
 
 
 # We don't have an interface for creating memos yet
@@ -131,6 +132,24 @@ def get_memos():
         del record['_id']
         records.append(record)
     return records 
+
+def add_memo(date, contnent):
+  """
+  insert memo with date as key and content as value
+  """
+  memo = {"type": "dated_memo", "date": arrow.get(date, "MM/DD/YYY").to('local').isoformat(), "text": content}
+  collection.insert(memo)
+
+  return True
+
+def rm_memo(key):
+  """
+  removes memos bassed on key
+  """
+  memo = {"_id": ObjectID(key)}
+  collection.remove(memo)
+
+  return True
 
 
 if __name__ == "__main__":
