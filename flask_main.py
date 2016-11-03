@@ -72,6 +72,11 @@ def index():
       app.logger.debug("Memo: " + str(memo))
   return flask.render_template('index.html', form = form)
 
+@app.route("/new")
+def create():
+  
+  return flask.render_template('new_mem.html')
+
 
 # We don't have an interface for creating memos yet
 # @app.route("/create")
