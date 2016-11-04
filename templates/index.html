@@ -39,9 +39,9 @@
 <h1>Memos</h1>
 
 <form >
-    <button type="button" name="new">New Memo</button>
+    <input type=button onClick=load_index() value="New Memo">
     <div class="row">
-    <button type="button" name="delete">Delete Selected Memo</button>
+    <button onclick="load_index()">Delete Selected Memo</button>
     </div>
 </form>
 
@@ -67,10 +67,13 @@
 </div> <!-- container -->
 
 <script type="text/javascript">
-  $("#new").click(function(event) {
-    //FIXME
-    location.href = url_for('new');
-  });
+  function load_index(){
+
+    $.getJSON("/new_mem", function(response){
+      window.location.replace("/new_mem");
+    })
+
+  }
 </script>
 
 </body>

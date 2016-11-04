@@ -71,9 +71,13 @@ def index():
       app.logger.debug("Memo: " + str(memo))
   return flask.render_template('index.html')
 
-@app.route("/new")
+@app.route("/new_mem", methods=['GET', 'POST'])
 def new_memo():
   
+  if request.method == 'POST':
+        
+    return redirect(url_for('index'))
+
   return flask.render_template('new_mem.html')
 
 
@@ -90,6 +94,10 @@ def page_not_found(error):
     return flask.render_template('page_not_found.html',
                                  badurl=request.base_url,
                                  linkback=url_for("index")), 404
+
+@app.route("/_add_mem")
+def _add_mem(date, content):
+  add_memo(date, contnent)
 
 #################
 #
