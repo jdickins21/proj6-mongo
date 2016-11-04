@@ -38,6 +38,13 @@
 
 <h1>Memos</h1>
 
+<form >
+    <button type="button" name="new">New Memo</button>
+    <div class="row">
+    <button type="button" name="delete">Delete Selected Memo</button>
+    </div>
+</form>
+
 {% if g.memos %}
     {% for memo in g.memos %}
   <div class="memo">
@@ -58,5 +65,13 @@
  
 
 </div> <!-- container -->
+
+<script type="text/javascript">
+  $("#new").click(function(event) {
+    //FIXME
+    location.href = url_for('new');
+  });
+</script>
+
 </body>
 </html>

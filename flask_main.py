@@ -65,15 +65,14 @@ except:
 @app.route("/")
 @app.route("/index")
 def index():
-  form = MemoForm()
   app.logger.debug("Main page entry")
   g.memos = get_memos()
   for memo in g.memos: 
       app.logger.debug("Memo: " + str(memo))
-  return flask.render_template('index.html', form = form)
+  return flask.render_template('index.html')
 
 @app.route("/new")
-def create():
+def new_memo():
   
   return flask.render_template('new_mem.html')
 
