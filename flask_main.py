@@ -73,10 +73,6 @@ def index():
 
 @app.route("/new_mem", methods=['GET', 'POST'])
 def new_memo():
-  
-  if request.method == 'POST':
-        
-    return redirect(url_for('index'))
 
   return flask.render_template('new_mem.html')
 
