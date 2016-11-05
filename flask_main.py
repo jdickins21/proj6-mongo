@@ -74,14 +74,8 @@ def index():
 @app.route("/new_mem", methods=['GET', 'POST'])
 def new_memo():
 
+
   return flask.render_template('new_mem.html')
-
-
-# We don't have an interface for creating memos yet
-# @app.route("/create")
-# def create():
-#     app.logger.debug("Create")
-#     return flask.render_template('create.html')
 
 
 @app.errorhandler(404)

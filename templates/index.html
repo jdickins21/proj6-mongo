@@ -41,7 +41,7 @@
 <form >
     <input type=button onClick=load_index() value="New Memo">
     <div class="row">
-    <button onclick="load_index()">Delete Selected Memo</button>
+    <button >Delete Selected Memo</button>
     </div>
 </form>
 
@@ -70,7 +70,7 @@
   function load_index(){
 
     $.getJSON("/new_mem", function(){
-      return;
+      window.location.replace("new_mem")
     })
 
   }
